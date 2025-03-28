@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import {useTranslation} from "react-i18next";
 
 interface ManagerTableProps {
     isVisible: boolean;
@@ -13,6 +14,7 @@ interface ManagerTableProps {
 const ManagerTable: React.FC<ManagerTableProps> = ({ isVisible, authors, publishers, genres, setAuthors, setPublishers, setGenres }) => {
     const [newManagerEntry, setNewManagerEntry] = useState({ type: "", name: "" });
 
+    const {t} = useTranslation();
     const handleAddManagerEntry = () => {
         if (!newManagerEntry.name.trim()) return;
 
@@ -41,38 +43,38 @@ const ManagerTable: React.FC<ManagerTableProps> = ({ isVisible, authors, publish
             <table className="table">
                 <thead>
                 <tr>
-                    <th>Tipo</th>
-                    <th>Nome</th>
-                    <th>Ações</th>
+                    <th>{t("Type")}</th>
+                    <th>{t("Name")}</th>
+                    <th>{t("Actions")}</th>
                 </tr>
                 </thead>
                 <tbody>
-                {[...authors.map(a => ({ type: "author", name: a })),
-                    ...publishers.map(p => ({ type: "publisher", name: p })),
-                    ...genres.map(g => ({ type: "genre", name: g }))]
+                {[...authors.map(a => ({ type: t("Author"), name: a })),
+                    ...publishers.map(p => ({ type: t("Publisher"), name: p })),
+                    ...genres.map(g => ({ type: t("Genre"), name: g }))]
                     .map((item, index) => (
                         <tr key={index}>
                             <td>{item.type}</td>
                             <td>{item.name}</td>
                             <td>
-                                <button onClick={() => handleRemoveManagerEntry(item.type, item.name)}>Remover</button>
+                                <button onClick={() => handleRemoveManagerEntry(item.type, item.name)}>{t("Delete")}</button>
                             </td>
                         </tr>
                     ))}
                 <tr>
                     <td>
                         <select value={newManagerEntry.type} onChange={(e) => setNewManagerEntry({ ...newManagerEntry, type: e.target.value })}>
-                            <option value="">Selecione</option>
-                            <option value="author">Autor</option>
-                            <option value="publisher">Editora</option>
-                            <option value="genre">Gênero</option>
+                            <option value="">{t("Select")}</option>
+                            <option value="author">{t("Author")}</option>
+                            <option value="publisher">{t("Publisher")}</option>
+                            <option value="genre">{t("Genre")}</option>
                         </select>
                     </td>
                     <td>
                         <input type="text" value={newManagerEntry.name} onChange={(e) => setNewManagerEntry({ ...newManagerEntry, name: e.target.value })} />
                     </td>
                     <td>
-                        <button onClick={handleAddManagerEntry}>Adicionar</button>
+                        <button onClick={handleAddManagerEntry}>{t("Add")}</button>
                     </td>
                 </tr>
                 </tbody>

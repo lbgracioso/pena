@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
-import { RowData } from "../types/types";
+import { RowData } from "../../types/types.ts";
+import {useTranslation} from "react-i18next";
 
 const FileManager = ({
                          setData,
@@ -11,9 +12,10 @@ const FileManager = ({
     setAuthors: React.Dispatch<React.SetStateAction<string[]>>;
     setPublishers: React.Dispatch<React.SetStateAction<string[]>>;
     setGenres: React.Dispatch<React.SetStateAction<string[]>>;
-}) => {
+}) =>
+{
     const fileInputRef = useRef<HTMLInputElement | null>(null);
-
+    const {t} = useTranslation();
     const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.[0];
         if (!file) return;
@@ -49,7 +51,7 @@ const FileManager = ({
 
     return (
         <>
-            <button type="button" onClick={triggerFileInput}>Carregar arquivo</button>
+            <button type="button" onClick={triggerFileInput}>{t("LoadFile")}</button>
             <input
                 ref={fileInputRef}
                 id="file-input"

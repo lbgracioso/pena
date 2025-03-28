@@ -1,5 +1,6 @@
 import React from "react";
-import { RowData } from "../types/types";
+import { RowData } from "../../types/types.ts";
+import {useTranslation} from "react-i18next";
 
 interface TableRowProps {
     row: RowData;
@@ -12,6 +13,9 @@ interface TableRowProps {
 }
 
 const TableRow: React.FC<TableRowProps> = ({ row, rowIndex, authors, publishers, genres, setData, data }) => {
+
+    const {t} =  useTranslation();
+
     const handleEdit = (column: keyof RowData, value: string) => {
         const newData = [...data];
         newData[rowIndex][column] = value;
@@ -62,7 +66,7 @@ const TableRow: React.FC<TableRowProps> = ({ row, rowIndex, authors, publishers,
                 <input type="checkbox" checked={row.read} onChange={handleReadedChange} />
             </td>
             <td>
-                <button onClick={() => handleRemoveRow(rowIndex)}>Remover</button>
+                <button onClick={() => handleRemoveRow(rowIndex)}>{t("Delete")}</button>
             </td>
         </tr>
     );

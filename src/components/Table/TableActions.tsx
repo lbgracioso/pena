@@ -1,5 +1,6 @@
 import React from "react";
-import FileManager from "./FileManager";
+import FileManager from "./FileManager.tsx";
+import {useTranslation} from "react-i18next";
 
 interface TableActionsProps {
     onAddRow: () => void;
@@ -29,6 +30,8 @@ const TableActions: React.FC<TableActionsProps> = ({
     const handleToggleVisibility = () => {
         setIsVisible((prev) => !prev);
     };
+
+    const {t} = useTranslation();
 
     const handleSave = () => {
         const jsonData = {
@@ -61,15 +64,15 @@ const TableActions: React.FC<TableActionsProps> = ({
 
     return (
         <div className="manager">
-            <button onClick={onAddRow}>Adicionar linha</button>
-            <button onClick={handleSave}>Salvar</button>
+            <button onClick={onAddRow}>{t("AddLine")}</button>
+            <button onClick={handleSave}>{t("Save")}</button>
             <FileManager
                 setData={setData}
                 setAuthors={setAuthors}
                 setPublishers={setPublishers}
                 setGenres={setGenres}
             />
-            <button onClick={handleToggleVisibility}>Gerenciar autores, editoras e gêneros</button>
+            <button onClick={handleToggleVisibility}>{t("ManageAuthorsPublishersGenres")}</button>
         </div>
     );
 };

@@ -42,3 +42,27 @@ iframe {
     border: 0;
     border-radius: 6px;
 }
+
+.selected {
+    border: 1px solid var(--black);
+}
+
+.flags-container {
+    padding: 6px 12px;
+    display: flex;
+    justify-content: center; /* Centraliza os ícones */
+    align-items: center;
+    gap: 10px;
+}
+
+.flag-icon {
+    width: 25px;
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+.flag-icon.selected {
+    transform: scale(1.1);
+    border: 2px solid #000; /* Destaque na seleção */
+}
