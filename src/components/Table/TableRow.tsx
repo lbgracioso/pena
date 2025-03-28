@@ -16,7 +16,7 @@ const TableRow: React.FC<TableRowProps> = ({ row, rowIndex, authors, publishers,
 
     const {t} =  useTranslation();
 
-    const handleEdit = (column: keyof RowData, value: string) => {
+    const handleEdit = <T extends keyof RowData>(column: T, value: RowData[T]) => {
         const newData = [...data];
         newData[rowIndex][column] = value;
         setData(newData);
