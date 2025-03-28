@@ -1,57 +1,50 @@
 # pena
-Pena is my open-source, easy to use personal library manager.
+Pena is my open-source, easy to use personal (book) library manager. I made it to help me organize my books (100+), and
+so far it's good enough.
 
-# React + TypeScript + Vite
+## Installation
+### Prerequisites
+Before running Pena, make sure you have the following installed:
+- Node.js (>=14.x)
+- npm (>=6.x)
+- Git (for cloning repositories)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### Getting started
+1. Clone the repository
+    ```
+    git clone https://github.com/your-username/pena.git
+    cd pena
+    ```
+2. Install dependencies
+    ```
+   npm install
+    ```
+3. Run the application
+    ```
+    npm run dev
+    ```
+   
+## Usage
 
-Currently, two official plugins are available:
+### Editing data
+1. Open a previously saved file or use the standard one.
+2. Create authors, publishers and genres.
+3. Insert books on the library manager.
+4. Save changes to your computer (it will download a .json file)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Supported file formats
+- .json
 
-## Expanding the ESLint configuration
+## Contributing
+We welcome contributions to the Pena project! If you would like to contribute, please follow these steps:
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature/your-feature`).
+3. Commit your changes (`git commit -m 'Add new feature'`).
+4. Push to the branch (`git push origin feature/your-feature`).
+5. Create a new Pull Request.
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+## License
+This repository is distributed under the terms of the GNU General Public License, version 3 or later.
+See the [LICENSE file](LICENSE) for details.
