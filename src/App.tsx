@@ -1,6 +1,6 @@
 import Header from "./Header.tsx";
 import './css/App.css'
-import Table from "./Table.tsx";
+import Table from "./components/Table.tsx";
 
 function App() {
     return (

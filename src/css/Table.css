@@ -7,7 +7,7 @@
     color: var(--black);
 }
 
-.manager button, .manager .file-label, button {
+.manager button, .manager .file-label, button, select {
     padding: 10px 12px;
     font-size: 16px;
     background-color: var(--raisin);
@@ -21,6 +21,16 @@
 .manager button:hover, .manager .file-label:hover, button:hover,
 .manager button:active, .manager .file-label:active, button:active {
     background-color: var(--ghost-white);
+    color: var(--black);
+}
+
+select option {
+    background-color: var(--raisin);
+    color: var(--mustard);
+}
+
+select option:checked {
+    background-color: var(--mustard);
     color: var(--black);
 }
 
