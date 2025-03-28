@@ -1,5 +1,6 @@
 {
   "name": "pena",
+  "homepage": "https://lbgracioso.github.io/pena/",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -7,10 +8,13 @@
     "dev": "node_modules/.bin/vite --host",
     "build": "node_modules/.bin/tsc -b && vite build",
     "lint": "node_modules/.bin/eslint pena",
-    "preview": "node_modules/.bin/vite preview"
+    "preview": "node_modules/.bin/vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "country-flag-icons": "^1.5.18",
+    "gh-pages": "^6.3.0",
     "i18next": "^24.2.3",
     "i18next-browser-languagedetector": "^8.0.4",
     "react": "^19.0.0",
