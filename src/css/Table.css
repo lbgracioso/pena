@@ -1,0 +1,123 @@
+.manager {
+    display: flex;
+    justify-content: flex-start;
+    gap: 5px;
+    padding: 10px;
+    background-color: var(--raisin);
+    color: var(--black);
+}
+
+.manager button, .manager .file-label, button, select {
+    padding: 10px 12px;
+    font-size: 16px;
+    background-color: var(--raisin);
+    color: var(--mustard);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.manager button:hover, .manager .file-label:hover, button:hover,
+.manager button:active, .manager .file-label:active, button:active {
+    background-color: var(--ghost-white);
+    color: var(--black);
+}
+
+select option {
+    background-color: var(--raisin);
+    color: var(--mustard);
+}
+
+select option:checked {
+    background-color: var(--mustard);
+    color: var(--black);
+}
+
+table {
+    background-color: var(--raisin);
+    border-collapse: collapse;
+    text-align: left;
+    width: 100%;
+    max-width: 100vw;
+    height: auto;
+    box-sizing: border-box;
+}
+
+table thead tr {
+    color: var(--black);
+    background-color: var(--mustard);
+}
+
+table th, td {
+    padding: 15px;
+    font-size: 16px;
+    vertical-align: middle;
+}
+
+table td {
+    text-align: left;
+    word-wrap: break-word;
+}
+
+table input {
+    width: 100%;
+    font-size: 16px;
+    padding: 8px;
+    border: 2px solid var(--mustard);
+    border-radius: 5px;
+    outline: none;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+table input:focus {
+    border-color: var(--black);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+table input[type="checkbox"] {
+    margin: 0;
+    padding: 0;
+    width: 20px;
+    height: 20px;
+}
+
+table td button {
+    width: 100%;
+    text-align: center;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.file-label {
+    cursor: pointer;
+    display: inline-block;
+    padding: 10px;
+    background-color: var(--mustard);
+    border-radius: 5px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.add-row-btn:hover {
+    background-color: darkgoldenrod;
+}
+
+@media (max-width: 768px) {
+    table th, td {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    .manager {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    table {
+        width: 100%;
+        overflow-x: auto;
+    }
+}
