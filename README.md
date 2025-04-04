@@ -1,50 +1,26 @@
-# pena
-Pena is my open-source, easy to use personal (book) library manager. I made it to help me organize my books (100+), and
-so far it's good enough.
+# Pena
 
-## Installation
-### Prerequisites
-Before running Pena, make sure you have the following installed:
-- Node.js (>=14.x)
-- npm (>=6.x)
-- Git (for cloning repositories)
+**Pena** is an open-source, lightweight, and user-friendly personal book library manager. Designed for readers who want to catalog and manage their digital or physical collections.
 
-### Getting started
-1. Clone the repository
-    ```
-    git clone https://github.com/your-username/pena.git
-    cd pena
-    ```
-2. Install dependencies
-    ```
-   npm install
-    ```
-3. Run the application
-    ```
-    npm run dev
-    ```
-   
-## Usage
+## Project Details
 
-### Editing data
-1. Open a previously saved file or use the standard one.
-2. Create authors, publishers and genres.
-3. Insert books on the library manager.
-4. Save changes to your computer (it will download a .json file)
+Pena helps you manage your book collection with ease. It allows you to:
 
-### Supported file formats
-- .json
+- Add, edit, and delete books
+- Manage metadata such as authors, publishers, and genres
+- Open or create library files in JSON format
+- Save your collection locally with a single click
 
-## Contributing
-We welcome contributions to the Pena project! If you would like to contribute, please follow these steps:
+It's simple to use and doesn't require cloud syncs or databases — just run it locally, organize your books, and save your data.
 
-1. Fork the repository.
-2. Create a new branch (`git checkout -b feature/your-feature`).
-3. Commit your changes (`git commit -m 'Add new feature'`).
-4. Push to the branch (`git push origin feature/your-feature`).
-5. Create a new Pull Request.
+## Documentation
 
+- [Usage Guide](docs/usage.md)
+- [Installation Instructions](docs/installation.md)
+- [Feature Overview](docs/features.md)
+- [Contributing](docs/contributing.md)
+- [Changelog](CHANGELOG.md)
 
 ## License
-This repository is distributed under the terms of the GNU General Public License, version 3 or later.
-See the [LICENSE file](LICENSE) for details.
+
+Pena is licensed under the GNU General Public License v3 or later. See the full [LICENSE](LICENSE) for more details.
