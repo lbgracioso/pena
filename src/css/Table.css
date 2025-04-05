@@ -7,6 +7,15 @@
     color: var(--black);
 }
 
+.manager.fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+    background-color: var(--mustard);
+}
+
 .manager button, .manager .file-label, button, select {
     padding: 10px 12px;
     font-size: 16px;
