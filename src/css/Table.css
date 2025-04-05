@@ -5,6 +5,7 @@
     padding: 10px;
     background-color: var(--raisin);
     color: var(--black);
+    transition: background-color 1s ease, top 1s ease;
 }
 
 .manager.fixed {
