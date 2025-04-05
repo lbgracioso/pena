@@ -17,6 +17,13 @@
     background-color: var(--mustard);
 }
 
+.filter-icon {
+    margin-left: 6px;
+    font-size: 12px;
+    vertical-align: middle;
+    color: var(--black);
+}
+
 .manager button, .manager .file-label, button, select {
     padding: 10px 12px;
     font-size: 16px;

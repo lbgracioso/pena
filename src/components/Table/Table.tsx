@@ -5,6 +5,7 @@ import ManagerTable from "./ManagerTable.tsx";
 import TableRow from "./TableRow.tsx";
 import "../../css/Table.css"
 import {useTranslation} from "react-i18next";
+import { FaFilter, FaSortUp, FaSortDown } from "react-icons/fa";
 
 const Table = () => {
     const [data, setData] = useState<RowData[]>([
@@ -28,6 +29,72 @@ const Table = () => {
         }]);
     };
 
+    const [filters] = useState<Record<keyof RowData, string>>({
+        book: "",
+        author: "",
+        publisher: "",
+        genre: "",
+        volume: "",
+        read: "all", // "all", "read", "unread"
+    });
+
+    const [sortConfig, setSortConfig] = useState<{ key: keyof RowData, direction: "asc" | "desc" } | null>(null);
+
+    const filteredData = data.filter((row) => {
+        const matchesBook = !filters.book || row.book === filters.book;
+        const matchesVolume = !filters.volume || row.volume === filters.volume;
+        const matchesAuthor = !filters.author || row.author === filters.author;
+        const matchesPublisher = !filters.publisher || row.publisher === filters.publisher;
+        const matchesGenre = !filters.genre || row.genre === filters.genre;
+        const matchesRead =
+            filters.read === "all" ||
+            (filters.read === "read" && row.read) ||
+            (filters.read === "unread" && !row.read);
+
+        return matchesBook && matchesVolume && matchesAuthor && matchesPublisher && matchesGenre && matchesRead;
+    });
+
+
+    const sortedData = [...filteredData].sort((a, b) => {
+        if (!sortConfig) return 0;
+        const { key, direction } = sortConfig;
+
+        if (a[key] < b[key]) return direction === "asc" ? -1 : 1;
+        if (a[key] > b[key]) return direction === "asc" ? 1 : -1;
+        return 0;
+    });
+
+    const handleSort = (key: keyof RowData) => {
+        setSortConfig(prev => {
+            if (prev?.key === key) {
+                return { key, direction: prev.direction === "asc" ? "desc" : "asc" };
+            }
+            return { key, direction: "asc" };
+        });
+    };
+
+    const tableKeys: (keyof RowData)[] = ["book", "author", "publisher", "genre", "volume", "read"];
+    const renderHeader = (key: keyof RowData) => {
+        const label = t(key.charAt(0).toUpperCase() + key.slice(1));
+        const showFilter = key === "read" ? filters[key] !== "all" : Boolean(filters[key]);
+        const isSorted = sortConfig?.key === key;
+        const sortIcon = isSorted ? (
+            sortConfig.direction === "asc" ? (
+                <FaSortUp className="filter-icon" />
+            ) : (
+                <FaSortDown className="filter-icon" />
+            )
+        ) : null;
+
+        return (
+            <th key={key} onClick={() => handleSort(key)}>
+                {label}
+                {showFilter && <FaFilter className="filter-icon" />}
+                {sortIcon}
+            </th>
+        );
+    };
+
     return (
         <>
             <TableActions
@@ -47,18 +114,22 @@ const Table = () => {
                 <table className="table">
                     <thead>
                     <tr>
-                        <th>{t("Book")}</th>
-                        <th>{t("Author")}</th>
-                        <th>{t("Publisher")}</th>
-                        <th>{t("Genre")}</th>
-                        <th>{t("Volume")}</th>
-                        <th>{t("Read")}</th>
+                        {tableKeys.map((key) => renderHeader(key))}
                         <th>{t("Actions")}</th>
                     </tr>
                     </thead>
                     <tbody>
-                    {data.map((row, rowIndex) => (
-                        <TableRow key={rowIndex} row={row} rowIndex={rowIndex} authors={authors} publishers={publishers} genres={genres} setData={setData} data={data} />
+                    {sortedData.map((row, rowIndex) => (
+                        <TableRow
+                            key={rowIndex}
+                            row={row}
+                            rowIndex={rowIndex}
+                            authors={authors}
+                            publishers={publishers}
+                            genres={genres}
+                            setData={setData}
+                            data={data}
+                        />
                     ))}
                     </tbody>
                 </table>
