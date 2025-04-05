@@ -22,11 +22,22 @@
   /* Neutral Colors */
   --white: white;
   --black: black;
+}
 
+#root {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 body {
   margin: 0;
+  background-color: var(--night);
   display: flex;
+  justify-content: center;
   min-height: 100vh;
+  overflow-x: hidden;
 }
