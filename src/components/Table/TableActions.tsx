@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import FileManager from "./FileManager.tsx";
 import {useTranslation} from "react-i18next";
 
@@ -62,8 +62,27 @@ const TableActions: React.FC<TableActionsProps> = ({
         URL.revokeObjectURL(url);
     };
 
+    const [fix, setFix] = useState(false);
+
+    function setFixed() {
+        if (window.scrollY > 1) {
+            setFix(true)
+        } else {
+            setFix(false)
+        }
+    }
+
+    useEffect(() => {
+        window.addEventListener("scroll", setFixed);
+
+        return () => {
+            window.removeEventListener("scroll", setFixed);
+        };
+    }, []);
+
+
     return (
-        <div className="manager">
+        <div className={fix ? 'manager fixed' : 'manager'}>
             <button onClick={onAddRow}>{t("AddLine")}</button>
             <button onClick={handleSave}>{t("Save")}</button>
             <FileManager
