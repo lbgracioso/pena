@@ -3,8 +3,8 @@
     justify-content: flex-start;
     gap: 5px;
     padding: 10px;
-    background-color: var(--raisin);
-    color: var(--black);
+    background-color: var(--manager-background);
+    color: var(--text-color);
     transition: background-color 1s ease, top 1s ease;
     width: 100vw;
     position: relative;
@@ -22,7 +22,7 @@
     margin-left: -50vw;
     width: 100vw;
     z-index: 999;
-    background-color: var(--mustard);
+    background-color: var(--third-bg);
     box-sizing: border-box;
 }
 
@@ -61,12 +61,13 @@ select option:checked {
 }
 
 table {
-    background-color: var(--raisin);
+    background-color: var(--secondary-bg);
     border-collapse: collapse;
     text-align: left;
     width: 100vw;
     position: relative;
     left: 50%;
+    margin-left: -50vw;
     margin-left: -50vw;
     max-width: none;
     box-sizing: border-box;
@@ -75,8 +76,8 @@ table {
 }
 
 table thead tr {
-    color: var(--black);
-    background-color: var(--mustard);
+    color: var(--text-color);
+    background-color: var(--third-bg);
 }
 
 table th, td {

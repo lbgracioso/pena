@@ -1,7 +1,7 @@
 .header {
-    background-color: var(--mustard);
+    background-color: var(--background);
     padding: 1px 20px;
-    color: var(--night);
+    color: var(--text-color);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -13,6 +13,23 @@
     margin-left: -50vw;
     margin-right: -50vw;
     box-sizing: border-box;
+}
+
+.theme-toggle {
+    background: none;
+    border-radius: 6px;
+    color: var(--white);
+    cursor: pointer;
+    font-size: 14px;
+    padding: 8px 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.theme-toggle svg {
+    font-size: 18px;
 }
 
 nav {
@@ -56,7 +73,7 @@ iframe {
 .flags-container {
     padding: 6px 12px;
     display: flex;
-    justify-content: center; /* Centraliza os ícones */
+    justify-content: center;
     align-items: center;
     gap: 10px;
 }
@@ -70,5 +87,5 @@ iframe {
 
 .flag-icon.selected {
     transform: scale(1.1);
-    border: 2px solid #000; /* Destaque na seleção */
+    border: 2px solid #000;
 }
