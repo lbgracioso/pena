@@ -68,7 +68,6 @@ table {
     position: relative;
     left: 50%;
     margin-left: -50vw;
-    margin-left: -50vw;
     max-width: none;
     box-sizing: border-box;
     height: auto;
@@ -78,6 +77,10 @@ table {
 table thead tr {
     color: var(--text-color);
     background-color: var(--third-bg);
+}
+
+table tbody tr {
+    color: var(--white);
 }
 
 table th, td {
