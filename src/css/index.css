@@ -12,12 +12,41 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
+}
+
+body.dark {
   /* Primary Colors */
   --night: #121212;
   --mustard: #FCDC4D;
   --grey: #24292e;
   --raisin: #272727;
   --ghost-white: #FFFAFF;
+
+  --background: #1a1a1a;
+  --secondary-bg: #1a1a1a ;
+  --third-bg: #222323;
+  --text-color: var(--white);
+  --manager-background: #1a1a1a;
+
+  /* Neutral Colors */
+  --white: white;
+  --black: black;
+}
+
+body.light {
+  /* Primary Colors */
+  --night: #121212;
+  --mustard: #FCDC4D;
+  --grey: #24292e;
+  --raisin: #272727;
+  --ghost-white: #FFFAFF;
+
+  --background: var(--mustard);
+  --secondary-bg: var(--raisin);
+  --third-bg: var(--mustard);
+  --text-color: var(--black);
+
+  --manager-background: var(--raisin);
 
   /* Neutral Colors */
   --white: white;
@@ -35,7 +64,7 @@
 
 body {
   margin: 0;
-  background-color: var(--night);
+  background-color: var(--background);
   display: flex;
   justify-content: center;
   min-height: 100vh;
