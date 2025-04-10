@@ -6,10 +6,11 @@ import TableRow from "./TableRow.tsx";
 import "../../css/Table.css"
 import {useTranslation} from "react-i18next";
 import { FaFilter, FaSortUp, FaSortDown } from "react-icons/fa";
+import {generateId} from "../../utils/utils.ts";
 
 const Table = () => {
     const [data, setData] = useState<RowData[]>([
-        {book: "Um livro qualquer", author: "lbgracioso", publisher: "Pena", genre: "Exemplo", volume: "1", read: false}
+        {id: generateId(), book: "Um livro qualquer", author: "lbgracioso", publisher: "Pena", genre: "Exemplo", volume: "1", read: false}
     ]);
 
     const { t } = useTranslation()
@@ -20,6 +21,7 @@ const Table = () => {
 
     const handleAddRow = () => {
         setData([...data, {
+            id: crypto.randomUUID(),
             book: "",
             author: authors[0] || "",
             publisher: publishers[0] || "",
@@ -30,6 +32,7 @@ const Table = () => {
     };
 
     const [filters] = useState<Record<keyof RowData, string>>({
+        id: "",
         book: "",
         author: "",
         publisher: "",
@@ -119,11 +122,10 @@ const Table = () => {
                     </tr>
                     </thead>
                     <tbody>
-                    {sortedData.map((row, rowIndex) => (
+                    {sortedData.map((row) => (
                         <TableRow
-                            key={rowIndex}
+                            key={row.id}
                             row={row}
-                            rowIndex={rowIndex}
                             authors={authors}
                             publishers={publishers}
                             genres={genres}
