@@ -4,7 +4,6 @@ import {useTranslation} from "react-i18next";
 
 interface TableRowProps {
     row: RowData;
-    rowIndex: number;
     authors: string[];
     publishers: string[];
     genres: string[];
@@ -12,24 +11,26 @@ interface TableRowProps {
     data: RowData[];
 }
 
-const TableRow: React.FC<TableRowProps> = ({ row, rowIndex, authors, publishers, genres, setData, data }) => {
+const TableRow: React.FC<TableRowProps> = ({ row, authors, publishers, genres, setData, data }) => {
 
     const {t} =  useTranslation();
 
     const handleEdit = <T extends keyof RowData>(column: T, value: RowData[T]) => {
-        const newData = [...data];
-        newData[rowIndex][column] = value;
+        const newData = data.map(item =>
+            item.id === row.id ? { ...item, [column]: value } : item
+        );
         setData(newData);
     };
 
     const handleReadedChange = () => {
-        const newData = [...data];
-        newData[rowIndex].read = !newData[rowIndex].read;
+        const newData = data.map(item =>
+            item.id === row.id ? { ...item, read: !item.read } : item
+        );
         setData(newData);
     };
 
-    const handleRemoveRow = (index: number) => {
-        const newData = data.filter((_, i) => i !== index);
+    const handleRemoveRow = () => {
+        const newData = data.filter(item => item.id !== row.id);
         setData(newData);
     };
 
@@ -66,7 +67,7 @@ const TableRow: React.FC<TableRowProps> = ({ row, rowIndex, authors, publishers,
                 <input type="checkbox" checked={row.read} onChange={handleReadedChange} />
             </td>
             <td>
-                <button onClick={() => handleRemoveRow(rowIndex)}>{t("Delete")}</button>
+                <button onClick={() => handleRemoveRow()}>{t("Delete")}</button>
             </td>
         </tr>
     );

@@ -36,6 +36,7 @@ const TableActions: React.FC<TableActionsProps> = ({
     const handleSave = () => {
         const jsonData = {
             livros: data.map((row) => ({
+                id: row.id,
                 book: row.book,
                 author: row.author,
                 publisher: row.publisher,

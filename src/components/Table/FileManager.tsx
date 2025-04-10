@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import { RowData } from "../../types/types.ts";
 import {useTranslation} from "react-i18next";
+import {generateId} from "../../utils/utils.ts";
 
 const FileManager = ({
                          setData,
@@ -25,7 +26,12 @@ const FileManager = ({
         reader.onload = () => {
             try {
                 const data = JSON.parse(reader.result as string);
-                setData(data.livros || []);
+                const booksWithId: RowData[] = (data.livros || []).map((livro: any) => ({
+                    ...livro,
+                    id: livro.id ?? generateId()
+                }));
+
+                setData(booksWithId);
                 setAuthors(data.autores || []);
                 setPublishers(data.editoras || []);
                 setGenres(data.generos || []);
